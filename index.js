@@ -39,9 +39,9 @@ async function fetchRSSFeed(url) {
 
 async function postToSlack(payload) {
     console.log('payload:', payload);
-    let url = config.slackApiUrl;
+    let slackURL = config.slackApiUrl;
     let slackToken = config.apiToken;
-    let res = await axios.post(url, {
+    let res = await axios.post(slackURL, {
         channel: config.slackChannel,
         blocks: [
             {
