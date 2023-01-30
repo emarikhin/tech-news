@@ -2,7 +2,7 @@ const Parser = require('rss-parser');
 const axios = require('axios');
 const config = require('config');
 
-var rssFeeds = [
+let rssFeeds = [
     'https://rss.nytimes.com/services/xml/rss/nyt/Technology.xml',
     'https://rss.nytimes.com/services/xml/rss/nyt/PersonalTech.xml',
     'https://www.cnet.com/rss/all/',
@@ -14,25 +14,20 @@ var rssFeeds = [
 let parser = new Parser();
 
 async function fetchRSSFeed(url) {
-
     console.log('running through', url);
-
     let feed = await parser.parseURL(url)
-
-    var feedTitle = feed.title;
-
-    var filteredFeed = feed.items.map(item => {
-        var keyWordsArr = config.keyWords
-        var filteredRssFeed = keyWordsArr.map(keyWord => {
-            var itemTitle = item.title
-            var itemLink = item.link
+    let feedTitle = feed.title;
+    let filteredFeed = feed.items.map(item => {
+        let keyWordsArr = config.keyWords
+        let filteredRssFeed = keyWordsArr.map(keyWord => {
+            let itemTitle = item.title
+            let itemLink = item.link
             return (item.title.includes(keyWord)) ? Object.assign({feedTitle, itemTitle, itemLink}) : false
         })
         .filter(f => !!f)
         return filteredRssFeed;
     })
     .filter(f => !!f.length);
-
     return filteredFeed;
 };
 
@@ -53,8 +48,8 @@ async function run(payload) {
             return fetchRSSFeed(url)
             .then(function(filteredFeed) {
                 if (!!filteredFeed && !!filteredFeed.length) {
-                    var finalFeed = filteredFeed.filter(f => !!f.length);
-                    var prettyFeed = JSON.stringify(finalFeed, undefined, 1);
+                    let finalFeed = filteredFeed.filter(f => !!f.length);
+                    let prettyFeed = JSON.stringify(finalFeed, undefined, 1);
                     console.log('prettyFeed:', prettyFeed);
                     return prettyFeed;
                 }
@@ -67,4 +62,4 @@ async function run(payload) {
     } catch (err) {
         console.log(err);
     }
-})()
+})();
