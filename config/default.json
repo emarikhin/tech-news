@@ -1,6 +1,7 @@
 {
     "apiToken" : "",
     "slackApiUrl" : "https://slack.com/api/chat.postMessage",
+    "slackChannel" : "",
     "keyWords" : [
         "Microsoft",
         "Tesla",
