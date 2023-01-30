@@ -136,7 +136,7 @@ async function run(payload) {
   let url = config.slackApiUrl;
   let slackToken = config.apiToken;
   let res = await axios.post(url, {
-    channel: slackChannel,
+    channel: config.slackChannel,
     text : payload
   }, { headers: { authorization: `Bearer ${slackToken}` } });
 
