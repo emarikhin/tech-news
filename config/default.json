@@ -1,0 +1,20 @@
+{
+    "apiToken" : "",
+    "slackApiUrl" : "https://slack.com/api/chat.postMessage",
+    "keyWords" : [
+        "Microsoft",
+        "Tesla",
+        "Apple",
+        "Meta",
+        "Secutiry",
+        "Google",
+        "Alphabet",
+        "Amazon",
+        "AWS",
+        "ChatGPT",
+        "Linux",
+        "Ubuntu",
+        "Mac",
+        "iPhone"
+    ]
+}
