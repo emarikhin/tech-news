@@ -133,7 +133,7 @@ async function fetchRSSFeed(url) {
 };
 
 async function run(payload) {
-  let url = slackApiUrl;
+  let url = config.slackApiUrl;
   let slackToken = config.apiToken;
   let res = await axios.post(url, {
     channel: slackChannel,
