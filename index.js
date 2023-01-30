@@ -148,7 +148,7 @@ rssFeeds.map(url => {
     .then(function(filteredFeed) {
         var finalFeed = filteredFeed.filter(f => !!f.length);
         var prettyFeed = JSON.stringify(finalFeed, undefined, 1);
-        console.log('prettyJson', prettyJson);
+        console.log('prettyFeed:', prettyFeed);
         return prettyFeed;
     })
     .then(function(prettyFeed) {
